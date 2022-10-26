@@ -9,7 +9,7 @@ import { Welcome } from "../views/Welcome";
 
 export const routes: RouteRecordRaw[] = [
   { path: '/', component: Foo },
-  { path: '/about', component: Bar },
+  { path: '/Bar', component: Bar },
   {
     path: '/welcome',
     component: Welcome,
