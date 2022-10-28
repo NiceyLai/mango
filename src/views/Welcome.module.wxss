@@ -16,6 +16,11 @@
   color: #D4D4EE;
 }
 
+.wrapper > header > svg {
+  width: 64px;
+  height: 69px;
+}
+
 .wrapper > main {
   flex-grow: 1;
   display: flex;

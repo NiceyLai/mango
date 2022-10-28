@@ -1,35 +1,42 @@
 .wrapper {
-    height: calc(100vh - var(--welcome-nav-height));
+height: calc(100vh - var(--welcome-nav-height));
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(to bottom, var(--welcome-bg-start) 0%, var(--welcome-bg-end) 100%);
+background-image: linear-gradient(to bottom,
+            var(--welcome-bg-start) 0%,
+            var(--welcome-bg-end) 100%);
     margin-bottom: var(--welcome-nav-height);
 
-    >header {
+>header {
         flex-shrink: 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         padding-top: 66px;
-        color: #D4D4EE;
+    color: #d4d4ee;
+    
+        >svg {
+            width: 64px;
+            height: 69px;
+        }
     }
 
-    >main {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-            margin: 16px 16px var(--welcome-nav-gap);
-    }
+  >main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      margin: 16px 16px var(--welcome-nav-gap);
+  }
 
-    >footer {
-        flex-shrink: 0;
-    }
+  >footer {
+      flex-shrink: 0;
+  }
 }
 .slide_fade_enter_active,
 .slide_fade_leave_active {
-    position: absolute;
+position: absolute;
     left: 0;
     top: 0;
     width: 100%;
@@ -38,9 +45,9 @@
 }
 
 .slide_fade_enter_from {
-    transform: translateX(100vw);
+transform: translateX(100vw);
 }
 
 .slide_fade_leave_to {
-    transform: translateX(-100vw);
+transform: translateX(-100vw);
 }
