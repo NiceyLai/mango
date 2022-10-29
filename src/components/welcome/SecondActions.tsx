@@ -9,4 +9,4 @@ export const SecondActions: FunctionalComponent = () => {
   </div>
 }
 
-SecondActions.displayName = 'FirstActions'
+SecondActions.displayName = 'SecondActions'

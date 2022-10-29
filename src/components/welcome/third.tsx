@@ -1,6 +1,7 @@
-import s from "./welcome.module.scss";
-export const Third = () => {
-   return (
+import s from './welcome.module.scss';
+import { FunctionalComponent } from 'vue';
+export const Third: FunctionalComponent = () => {
+  return (
     <div class={s.card}>
       <svg>
         <use xlinkHref='#chart'></use>
@@ -9,3 +10,4 @@ export const Third = () => {
     </div>
   )
 }
+Third.displayName = 'Third'
