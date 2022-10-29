@@ -5,3 +5,8 @@
 .button_wrapper {
   padding: 16px 16px;
 }
+
+.pig {
+  width: 128px;
+  height: 128px;
+}
