@@ -11,6 +11,10 @@ h5,
 h6 {
     font-weight: normal;
 }
+ul,
+ol {
+    list-style: none;
+}
 *::before,
 *::after {
     box-sizing: border-box;
