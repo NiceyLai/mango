@@ -26,7 +26,6 @@ export const emojiList: EmojiList = [
       "\u{1F929}",
       "\u{1F618}",
       "\u{1F617}",
-      "\u{263A}",
       "\u{1F61A}",
       "\u{1F619}",
     ],
@@ -86,7 +85,6 @@ export const emojiList: EmojiList = [
       "\u{1F615}",
       "\u{1F61F}",
       "\u{1F641}",
-      "\u{2639}",
       "\u{1F62E}",
       "\u{1F62F}",
       "\u{1F632}",
@@ -119,7 +117,6 @@ export const emojiList: EmojiList = [
       "\u{1F608}",
       "\u{1F47F}",
       "\u{1F480}",
-      "\u{2620}",
     ],
   ],
   [

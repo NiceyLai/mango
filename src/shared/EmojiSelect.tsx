@@ -1,4 +1,4 @@
-import { defineComponent, PropType, ref } from 'vue';
+import { computed, defineComponent, PropType, ref } from 'vue';
 import { emojiList } from './emojiList';
 import s from './EmojiSelect.module.scss';
 export const EmojiSelect = defineComponent({
@@ -29,18 +29,26 @@ export const EmojiSelect = defineComponent({
             ]],
             ['运动', ['sport', 'game']],
         ]
-        const selectedItem = table[refSelected.value][1]
-        const emojis = selectedItem.map(category =>
-            emojiList.find(item => item[0] === category)?.[1]
-                .map(item => <li>{item}</li>)
-        )
+
+        const onClick = (index: number) => {
+            refSelected.value = index
+        }
+        const emojis = computed(() => {
+            const selectedItem = table[refSelected.value][1]
+            return selectedItem.map(category =>
+                emojiList.find(item => item[0] === category)?.[1]
+                    .map(item => <li>{item}</li>)
+            )
+        })
         return () => (
             <div class={s.emojiList}>
                 <nav>
-                    {table.map(item => <span>{item[0]}</span>)}
+                    {table.map((item, index) => <span class={
+                        index === refSelected.value ? s.selected : ''
+                    } onClick={() => onClick(index)}>{item[0]}</span>)}
                 </nav>
                 <ol>
-                    {emojis}
+                    {emojis.value}
                 </ol>
             </div>
         )
