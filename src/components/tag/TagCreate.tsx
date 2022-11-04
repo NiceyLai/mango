@@ -1,8 +1,8 @@
-import { defineComponent, PropType, reactive, toRaw } from "vue";
+import { defineComponent, reactive } from "vue";
 import { MainLayout } from "../../layouts/MainLayout";
 import { Icon } from "../../shared/Icon";
 import { Button } from "../../shared/Button";
-import s from "./TagCreate.module.scss";
+import s from "./Tag.module.scss";
 import { EmojiSelect } from "../../shared/EmojiSelect";
 import { Rules, validate } from "../../shared/validate";
 export const TagCreate = defineComponent({

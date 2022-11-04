@@ -1,10 +1,10 @@
 import { Button } from "../../shared/Button";
 import { Icon } from "../../shared/Icon";
-import { defineComponent, PropType, reactive } from 'vue';
+import { defineComponent, reactive } from 'vue';
 import { MainLayout } from '../../layouts/MainLayout';
 import { EmojiSelect } from '../../shared/EmojiSelect';
 import { Rules, validate } from '../../shared/validate';
-import s from './TagEdit.module.scss';
+import s from './Tag.module.scss';
 export const TagEdit = defineComponent({
     setup: (props, context) => {
         const formData = reactive({
