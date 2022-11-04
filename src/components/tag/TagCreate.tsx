@@ -6,11 +6,6 @@ import s from "./TagCreate.module.scss";
 import { EmojiSelect } from "../../shared/EmojiSelect";
 import { Rules, validate } from "../../shared/validate";
 export const TagCreate = defineComponent({
-    props: {
-        name: {
-            type: String as PropType<string>,
-        },
-    },
     setup: (props, context) => {
         const formData = reactive({
             name: '',
