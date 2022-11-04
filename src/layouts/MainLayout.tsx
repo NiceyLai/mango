@@ -1,5 +1,6 @@
 import { defineComponent } from 'vue';
 import { Navbar } from '../shared/Navbar';
+import s from './MainLayout.module.scss';
 export const MainLayout = defineComponent({
     setup: (props, context) => {
         return () => (
@@ -7,7 +8,7 @@ export const MainLayout = defineComponent({
                 <Navbar>
                     {{
                         default: () => context.slots.title?.(),
-                        icon: () =>  context.slots.icon?.()
+                        icon: () => context.slots.icon?.()
                     }}
                 </Navbar>
                 {context.slots.default?.()}
