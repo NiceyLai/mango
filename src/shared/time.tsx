@@ -32,6 +32,7 @@ export class Time {
             .replace(/SSS/, msecond.toString().padStart(3, '0'))
     }
     firstDayOfMonth() {
+        // 年 月 日 时 分 秒
         return new Time(new Date(this.date.getFullYear(), this.date.getMonth(), 1, 0, 0, 0));
     }
     firstDayOfYear() {
@@ -47,7 +48,6 @@ export class Time {
         return this.date
     }
     add(amount: number, unit: 'year' | 'month' | 'day' | 'hour' | 'minute' | 'second' | 'millisecond') {
-        // return new Time but not change this.date
         let date = new Date(this.date.getTime());
         switch (unit) {
             case 'year':
