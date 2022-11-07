@@ -76,6 +76,7 @@ export const ItemList = defineComponent({
                 <main>
                   <Form>
                     <FormItem label='开始时间' v-model={customTime.start} type='date' />
+                    <FormItem label='结束时间' v-model={customTime.end} type='date' />
                   </Form>
                 </main>
               </div>
