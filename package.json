@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "cloc": "^2.10.0",
+    "echarts": "^5.4.0",
     "sass": "^1.55.0",
     "svgo": "2.8.0",
     "svgstore": "3.0.1",
