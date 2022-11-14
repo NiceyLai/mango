@@ -3,6 +3,7 @@ import { defineComponent, PropType, reactive, ref } from 'vue';
 import { MainLayout } from '../layouts/MainLayout';
 import { Button } from '../shared/Button';
 import { Form, FormItem } from '../shared/Form';
+import { http } from '../shared/Http';
 import { Icon } from '../shared/Icon';
 import { validate } from '../shared/validate';
 import s from './SignInPage.module.scss';
@@ -28,11 +29,16 @@ export const SignInPage = defineComponent({
         { key: 'code', type: 'required', message: '必填' },
       ]))
     }
+    const onError = (error: any) => {
+      if (error.response.status === 422) {
+        Object.assign(errors, error.response.data.errors);
+      }
+      throw error
+    }
     const onClickSendValidationCode = async () => {
-      const response = await axios.post('/api/v1/validation_codes', { email: formData.email })
-        .catch(() => {
-          // 失败
-        })
+      const response = await http
+        .post('/validation_codes', { email: formData.email })
+        .catch(onError)
       // 成功
       refValidationCode.value.startCount()
     }
