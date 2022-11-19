@@ -1,7 +1,7 @@
+import { routes } from "./config/routes";
 import { createApp } from "vue";
 import { App } from "./App";
 import { createRouter } from "vue-router";
-import { routes } from "./config/routes";
 import { history } from "./shared/history";
 import "@svgstore";
 import { fetchMe, mePromise } from "./shared/me";
@@ -16,7 +16,8 @@ const whiteList: Record<string, "exact" | "startsWith"> = {
   "/welcome": "startsWith",
   "/sign_in": "startsWith",
 };
-router.beforeEach(async (to, from) => {
+
+router.beforeEach((to, from) => {
   for (const key in whiteList) {
     const value = whiteList[key];
     if (value === "exact" && to.path === key) {
@@ -25,11 +26,11 @@ router.beforeEach(async (to, from) => {
     if (value === "startsWith" && to.path.startsWith(key)) {
       return true;
     }
-    return mePromise!.then(
-      () => true,
-      () => "/sign_in?return_to=" + to.path
-    );
   }
+  return mePromise!.then(
+    () => true,
+    () => "/sign_in?return_to=" + to.path
+  );
 });
 
 const app = createApp(App);
