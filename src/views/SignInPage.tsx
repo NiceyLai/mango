@@ -1,9 +1,11 @@
-import { defineComponent, reactive, ref } from 'vue';
+import axios, { AxiosResponse } from 'axios';
+import { defineComponent, PropType, reactive, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useBool } from '../hooks/useBool';
 import { MainLayout } from '../layouts/MainLayout';
 import { Button } from '../shared/Button';
 import { Form, FormItem } from '../shared/Form';
+import { history } from '../shared/history';
 import { http } from '../shared/Http';
 import { Icon } from '../shared/Icon';
 import { refreshMe } from '../shared/me';
@@ -36,6 +38,7 @@ export const SignInPage = defineComponent({
       if (!hasError(errors)) {
         const response = await http.post<{ jwt: string }>('/session', formData)
           .catch(onError)
+        console.log(response)
         localStorage.setItem('jwt', response.data.jwt)
         // router.push('/sign_in?return_to='+ encodeURIComponent(route.fullPath))
         const returnTo = route.query.return_to?.toString()
@@ -45,7 +48,7 @@ export const SignInPage = defineComponent({
     }
     const onError = (error: any) => {
       if (error.response.status === 422) {
-        Object.assign(errors, error.response.data.errors);
+        Object.assign(errors, error.response.data.errors)
       }
       throw error
     }
@@ -57,6 +60,7 @@ export const SignInPage = defineComponent({
         .finally(enable)
       // 成功
       refValidationCode.value.startCount()
+
     }
     return () => (
       <MainLayout>{
@@ -70,12 +74,12 @@ export const SignInPage = defineComponent({
                 <h1 class={s.appName}>山竹记账</h1>
               </div>
               <Form onSubmit={onSubmit}>
-                <FormItem ref={refValidationCode} label="邮箱地址" type="text"
+                <FormItem label="邮箱地址" type="text"
                   placeholder='请输入邮箱，然后点击发送验证码'
                   v-model={formData.email} error={errors.email?.[0]} />
-                <FormItem label="验证码" type="validationCode"
+                <FormItem ref={refValidationCode} label="验证码" type="validationCode"
                   placeholder='请输入六位数字'
-                  countFrom={3}
+                  countFrom={10}
                   disabled={refDisabled.value}
                   onClick={onClickSendValidationCode}
                   v-model={formData.code} error={errors.code?.[0]} />

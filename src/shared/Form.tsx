@@ -11,7 +11,6 @@ export const Form = defineComponent({
       type: Function as PropType<(e: Event) => void>,
     }
   },
-  emits: ['update:modelValue'],
   setup: (props, context) => {
     return () => (
       <form class={s.form} onSubmit={props.onSubmit}>
@@ -42,17 +41,15 @@ export const FormItem = defineComponent({
       type: Number,
       default: 60
     },
-    disabled: {
-      type: Boolean,
-
-    }
+    disabled: Boolean,
   },
+  emits: ['update:modelValue'],
   setup: (props, context) => {
     const refDateVisible = ref(false)
     const timer = ref<number>()
     const count = ref<number>(props.countFrom)
     const isCounting = computed(() => !!timer.value)
-    const startCount = () => {
+    const startCount = () =>
       timer.value = setInterval(() => {
         count.value -= 1
         if (count.value === 0) {
@@ -61,7 +58,6 @@ export const FormItem = defineComponent({
           count.value = props.countFrom
         }
       }, 1000)
-    }
     context.expose({ startCount })
     const content = computed(() => {
       switch (props.type) {

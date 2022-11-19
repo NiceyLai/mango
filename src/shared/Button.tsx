@@ -1,5 +1,5 @@
-import { computed, defineComponent, PropType, ref } from "vue";
-import s from "./Button.module.scss";
+import { computed, defineComponent, PropType, ref } from 'vue';
+import s from './Button.module.scss';
 
 interface Props {
 }
@@ -29,7 +29,9 @@ export const Button = defineComponent({
   setup: (props, context) => {
     const selfDisabled = ref(false)
     const _disabled = computed(() => {
-      if (props.autoSelfDisabled === false) { return props.disabled }
+      if (props.autoSelfDisabled === false) {
+        return props.disabled
+      }
       if (selfDisabled.value) {
         return true
       } else {
@@ -43,9 +45,10 @@ export const Button = defineComponent({
         selfDisabled.value = false
       }, 500)
     }
-    return () =>
+    return () => (
       <button disabled={_disabled.value} type={props.type} class={[s.button, s[props.level]]} onClick={onClick}>
         {context.slots.default?.()}
-      </button>;
-  },
-});
+      </button>
+    )
+  }
+})
