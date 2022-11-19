@@ -69,7 +69,6 @@ export const SignInPage = defineComponent({
                 <Icon class={s.icon} name="mangosteen" />
                 <h1 class={s.appName}>山竹记账</h1>
               </div>
-              <div>{JSON.stringify(formData)}</div>
               <Form onSubmit={onSubmit}>
                 <FormItem ref={refValidationCode} label="邮箱地址" type="text"
                   placeholder='请输入邮箱，然后点击发送验证码'
