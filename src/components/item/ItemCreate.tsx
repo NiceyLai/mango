@@ -16,7 +16,8 @@ export const ItemCreate = defineComponent({
     const refKind = ref('支出')
     const refPage = ref(0)
     const refHasMore = ref(false)
-    const onLoadMore = async () => {
+    const refExpensesTags = ref<Tag[]>([])
+    const fetchTags = async () => {
       const response = await http.get<Resources<Tag>>('/tags', {
         kind: "expenses",
         page: refPage.value + 1,
@@ -27,17 +28,8 @@ export const ItemCreate = defineComponent({
       refHasMore.value = (pager.page - 1) * pager.per_page + resources.length < pager.count
       refPage.value += 1
     }
-    onMounted(async () => {
-      const response = await http.get<Resources<Tag>>('/tags', {
-        kind: "expenses",
-        _mock: 'tagIndex'
-      })
-      const { resources, pager } = response.data
-      refExpensesTags.value = resources
-      refHasMore.value = (pager.page - 1) * pager.per_page + resources.length < pager.count
-      refPage.value = 1
-    })
-    const refExpensesTags = ref<Tag[]>([])
+    onMounted(fetchTags)
+
     onMounted(async () => {
       const response = await http.get<{ resources: Tag[] }>('/tags', {
         kind: "income",
@@ -76,7 +68,7 @@ export const ItemCreate = defineComponent({
                 </div>
                 <div class={s.more}>
                   {refHasMore.value ?
-                    <Button class={s.loadMore} onClick={onLoadMore}>加载更多</Button> :
+                    <Button class={s.loadMore} onClick={fetchTags}>加载更多</Button> :
                     <span class={s.noMore}>没有更多</span>}
                 </div>
               </Tab>
