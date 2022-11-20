@@ -17,7 +17,7 @@ export const ItemCreate = defineComponent({
     const refKind = ref('支出')
     const { tags: expensesTags, hasMore, fetchTags } = useTags((page) => {
       return http.get<Resources<Tag>>('/tags', {
-        kind: "expenses",
+        kind: 'expenses',
         page: page + 1,
         _mock: 'tagIndex'
       })
@@ -90,7 +90,8 @@ export const ItemCreate = defineComponent({
                 <div class={s.more}>
                   {hasMore2.value ?
                     <Button class={s.loadMore} onClick={fetchTags2}>加载更多</Button> :
-                    <span class={s.noMore}>没有更多</span>}
+                    <span class={s.noMore}>没有更多</span>
+                  }
                 </div>
               </Tab>
             </Tabs>
