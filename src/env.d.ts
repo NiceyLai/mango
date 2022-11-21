@@ -6,6 +6,12 @@ declare module "*.vue" {
   const component: DefineComponent<{}, {}, any>;
   export default component;
 }
+
+declare module "*.scss" {
+  const content: Record<string, any> = {};
+  export default content;
+}
+
 type JSONValue =
   | string
   | number
@@ -21,6 +27,14 @@ type Tag = {
   sign: string;
   kind: income | expenses;
 };
+type Item = {
+  id: number;
+  user_id: number;
+  amount: number;
+  tags_id: number[];
+  happen_at: string;
+  kind: expenses | income;
+};
 
 type Resources<T = any> = {
   resources: T[];
@@ -29,4 +43,11 @@ type Resources<T = any> = {
     per_page: number;
     count: number;
   };
+};
+type Resource<T> = {
+  resource: T;
+};
+
+type ResourceError = {
+  errors: Record<string, string[]>;
 };
