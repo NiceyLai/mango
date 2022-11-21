@@ -1,4 +1,4 @@
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, onUpdated, PropType } from 'vue';
 import { Button } from '../../shared/Button';
 import { http } from '../../shared/Http';
 import { Icon } from '../../shared/Icon';
@@ -12,7 +12,7 @@ export const Tags = defineComponent({
     }
   },
   setup: (props, context) => {
-    const { tags: expensesTags, hasMore, fetchTags } = useTags((page) => {
+    const { tags, hasMore, fetchTags } = useTags((page) => {
       return http.get<Resources<Tag>>('/tags', {
         kind: props.kind,
         page: page + 1,
@@ -29,7 +29,7 @@ export const Tags = defineComponent({
             新增
           </div>
         </div>
-        {expensesTags.value.map(tag =>
+        {tags.value.map(tag =>
           <div class={[s.tag, s.selected]}>
             <div class={s.sign}>
               {tag.sign}
