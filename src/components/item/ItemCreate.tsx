@@ -1,10 +1,7 @@
-import { defineComponent, onMounted, PropType, ref } from 'vue';
+import { defineComponent, PropType, ref } from 'vue';
 import { MainLayout } from '../../layouts/MainLayout';
-import { Button } from '../../shared/Button';
-import { http } from '../../shared/Http';
 import { Icon } from '../../shared/Icon';
 import { Tabs, Tab } from '../../shared/Tabs';
-import { useTags } from '../../shared/useTags';
 import { InputPad } from './InputPad';
 import s from './ItemCreate.module.scss';
 import { Tags } from './Tags';
@@ -16,17 +13,6 @@ export const ItemCreate = defineComponent({
   },
   setup: (props, context) => {
     const refKind = ref('支出')
-
-    const { tags: incomeTags,
-      hasMore: hasMore2,
-      fetchTags: fetchTags2
-    } = useTags((page) => {
-      return http.get<Resources<Tag>>('/tags', {
-        kind: 'income',
-        page: page + 1,
-        _mock: 'tagIndex'
-      })
-    })
     return () => (
       <MainLayout class={s.layout}>{{
         title: () => '记一笔',
