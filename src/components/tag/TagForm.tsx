@@ -1,6 +1,5 @@
 import { Button } from "../../shared/Button";
 import { defineComponent, reactive } from 'vue';
-import { EmojiSelect } from '../../shared/EmojiSelect';
 import s from './Tag.module.scss';
 import { Rules, validate } from "../../shared/validate";
 import { Form, FormItem } from "../../shared/Form";
