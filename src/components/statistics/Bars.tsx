@@ -9,13 +9,6 @@ export const Bars = defineComponent({
     }
   },
   setup: (props, context) => {
-    // const betterData3 = computed(() => {
-    //   const total = data3.reduce((sum, item) => sum + item.amount, 0)
-    //   return data3.map(item => ({
-    //     ...item,
-    //     percent: Math.round(item.amount / total * 100) + '%'
-    //   }))
-    // })
     return () => (
       <div class={s.wrapper}>
         {(props.data && props.data.length > 0) ?
