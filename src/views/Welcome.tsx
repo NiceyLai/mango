@@ -14,7 +14,7 @@ const pushMap: Record<string, string> = {
   'Welcome1': '/welcome/2',
   'Welcome2': '/welcome/3',
   'Welcome3': '/welcome/4',
-  'Welcome4': '/start',
+  'Welcome4': '/items',
 }
 export const Welcome = defineComponent({
   setup: (props, context) => {
@@ -22,10 +22,10 @@ export const Welcome = defineComponent({
     const route = useRoute();
     const router = useRouter();
     const { direction, swiping } = useSwipe(main, {
-      beforeStart:e=>e.preventDefault()
+      beforeStart: e => e.preventDefault()
     });
     const replace = throttle(() => {
-       const name = (route.name || 'Welcome1').toString()
+      const name = (route.name || 'Welcome1').toString()
       router.replace(pushMap[name])
     }, 500);
     watchEffect(() => {
