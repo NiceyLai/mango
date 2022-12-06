@@ -1,4 +1,3 @@
-import { Icon } from "../../shared/Icon";
 import { defineComponent } from 'vue';
 import { MainLayout } from '../../layouts/MainLayout';
 import s from './Tag.module.scss';
@@ -38,7 +37,6 @@ export const TagEdit = defineComponent({
           default: () => <>
             <TagForm id={numberId} />
             <div class={s.actions}>
-              <Button level='danger' class={s.removeTags} onClick={() => onDelete()}>删除标签</Button>
               <Button level='danger' class={s.removeTagsAndItems}
                 onClick={() => onDelete({ withItems: true })}>删除标签和记账</Button>
             </div>
