@@ -70,7 +70,7 @@ export const SignInPage = defineComponent({
           default: () => (
             <div class={s.wrapper}>
               <div class={s.logo}>
-                <Icon class={s.icon} name="sweetCones" />
+                <Icon class={s.icon} name="sweetcones" />
                 <h1 class={s.appName}>山竹记账</h1>
               </div>
               <Form onSubmit={onSubmit}>
@@ -83,7 +83,7 @@ export const SignInPage = defineComponent({
                   disabled={refDisabled.value}
                   onClick={onClickSendValidationCode}
                   v-model={formData.code} error={errors.code?.[0]} />
-                <FormItem style={{ paddingTop: '96px' }}>
+                <FormItem style={{ paddingTop: '32px' }}>
                   <Button type="submit">登录</Button>
                 </FormItem>
               </Form>
