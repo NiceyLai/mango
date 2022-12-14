@@ -12,6 +12,14 @@ export const Overlay = defineComponent({
 	},
 	setup: (props) => {
 		const meStore = useMeStore()
+		const currentTab = ref<number>(0)
+		const linkArray = [
+			{ to: '/items', name: 'sweetcones', text: '首页列表' },
+			{ to: '/items/create', name: 'bill', text: '记一笔账' },
+			{ to: '/statistics', name: 'charts', text: '统计图表' },
+			{ to: '/export', name: 'export', text: '导出数据' },
+			{ to: '/notify', name: 'notify', text: '记账提醒' },
+		]
 		const closeOverlay = () => {
 			props.onClose?.()
 		}
@@ -20,6 +28,24 @@ export const Overlay = defineComponent({
 		onMounted(async () => {
 			const response = await meStore.mePromise
 			me.value = response?.data.resource
+			const path = route.path
+			switch (path) {
+				case '/items':
+					currentTab.value = 0
+					break
+				case '/items/create':
+					currentTab.value = 1
+					break
+				case '/statistics':
+					currentTab.value = 2
+					break
+				case '/export':
+					currentTab.value = 3
+					break
+				case '/notify':
+					currentTab.value = 4
+					break
+			}
 		})
 		const onSignOut = async () => {
 			await Dialog.confirm({
@@ -48,31 +74,16 @@ export const Overlay = defineComponent({
 						)}
 				</section>
 				<nav>
-					<ul class={s.action_list}>
-						<li>
-							<RouterLink to="/items" class={s.action}>
-								<Icon name="bill" class={s.icon} />
-								<span>记账列表</span>
-							</RouterLink>
-						</li>
-						<li>
-							<RouterLink to="/statistics" class={s.action}>
-								<Icon name="charts" class={s.icon} />
-								<span>统计图表</span>
-							</RouterLink>
-						</li>
-						<li>
-							<RouterLink to="/export" class={s.action}>
-								<Icon name="export" class={s.icon} />
-								<span>导出数据</span>
-							</RouterLink>
-						</li>
-						<li>
-							<RouterLink to="/notify" class={s.action}>
-								<Icon name="notify" class={s.icon} />
-								<span>记账提醒</span>
-							</RouterLink>
-						</li>
+					<ul class={s.action_list} >
+						{linkArray.map((item, index) => (
+							<li>
+								<RouterLink to={item.to} class={index === currentTab.value ? s.selected : s.action}
+								>
+									<Icon name={item.name} class={s.icon} />
+									<span>{item.text}</span>
+								</RouterLink>
+							</li>
+						))}
 					</ul>
 				</nav>
 			</div>
