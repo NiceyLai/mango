@@ -1,6 +1,8 @@
 import { defineComponent, PropType } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { Icon } from './Icon';
+import s from './BackIcon.module.scss'
+
 export const BackIcon = defineComponent({
   setup: (props, context) => {
     const route = useRoute();
@@ -13,6 +15,6 @@ export const BackIcon = defineComponent({
         router.back();
       }
     };
-    return () => <Icon name="left" onClick={onClick} />;
+    return () => <Icon name="left" onClick={onClick} class={s.backIcon} />;
   },
 });
