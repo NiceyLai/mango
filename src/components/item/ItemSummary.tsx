@@ -76,15 +76,15 @@ export const ItemSummary = defineComponent({
               <ul class={s.total}>
                 <li>
                   <span>收入</span>
-                  <Money value={itemsBalance.income} />
+                  <span>￥<Money value={itemsBalance.income} /></span>
                 </li>
                 <li>
                   <span>支出</span>
-                  <Money value={itemsBalance.expenses} />
+                  <span>￥<Money value={itemsBalance.expenses} /></span>
                 </li>
                 <li>
                   <span>净收入</span>
-                  <Money value={itemsBalance.balance} />
+                  <span>￥<Money value={itemsBalance.balance} /></span>
                 </li>
               </ul>
               <ol class={s.list}>
