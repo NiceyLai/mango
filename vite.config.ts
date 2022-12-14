@@ -56,7 +56,7 @@ export default defineConfig(({ command }) => {
         includeAssets: ['favicon.ico', 'pwa-192x192.png', 'pwa-512x512.png'],
         manifest: {
           name: '甜筒记账',
-          short_name: '山竹',
+          short_name: '甜筒',
           description: '甜筒记账',
           theme_color: '#ffffff',
           icons: [
