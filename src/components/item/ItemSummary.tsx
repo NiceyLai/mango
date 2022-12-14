@@ -117,7 +117,7 @@ export const ItemSummary = defineComponent({
             </>
           ) : (
             <>
-              <Center class={s.pig_wrapper} direction="|">
+              <Center class={s.bill_wrapper} direction="|">
                 <Icon name="bill" class={s.bill} />
                 <p>本月没有发现账单哦，试着记一笔~</p>
               </Center>

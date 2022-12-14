@@ -89,11 +89,12 @@
   height: 50vw;
 
   &_wrapper {
-    padding: 120px 0;
+    padding: 120px 0 0 0;
     font-size: 20px;
 
     p {
-      padding: 4px 0;
+      padding: 64px 0 10px 0;
+      color: #cbc4c4;
     }
   }
 }

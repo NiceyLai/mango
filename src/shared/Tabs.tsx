@@ -36,6 +36,7 @@ export const Tabs = defineComponent({
             >
               {item.props?.name}
             </li>)}
+
         </ol>
         {props.rerenderOnSelect ?
           <div key={props.selected}>
