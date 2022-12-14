@@ -1,4 +1,4 @@
-import { Overlay } from 'vant';
+import { Overlay, Toast } from 'vant';
 import { defineComponent, PropType, reactive, ref } from 'vue';
 import { Form, FormItem } from '../shared/Form';
 import { OverlayIcon } from '../shared/Overlay';
@@ -60,6 +60,9 @@ export const TimeTabsLayout = defineComponent({
     ]
     const refOverlayVisible = ref(false)
     const onSubmitCustomTime = (e: Event) => {
+      if (new Date(tempTime.start).getTime() > new Date(tempTime.end).getTime()) {
+        return Toast('开始时间大于结束时间\n请重新选择时间')
+      }
       e.preventDefault()
       refOverlayVisible.value = false
       Object.assign(customTime, tempTime)

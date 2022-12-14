@@ -77,8 +77,7 @@ export const Overlay = defineComponent({
 					<ul class={s.action_list} >
 						{linkArray.map((item, index) => (
 							<li>
-								<RouterLink to={item.to} class={index === currentTab.value ? s.selected : s.action}
-								>
+								<RouterLink to={item.to} class={index === currentTab.value ? s.selected : s.action} >
 									<Icon name={item.name} class={s.icon} />
 									<span>{item.text}</span>
 								</RouterLink>
