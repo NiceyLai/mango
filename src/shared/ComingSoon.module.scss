@@ -1,17 +1,14 @@
-.text {
-  text-align: center;
-  font-size: 32px;
-}
-
-.link {
-  text-align: center;
-}
-
 .bill {
-  width: 128px;
-  height: 128px;
+  width: 75vw;
+  height: 75vw;
 
   &_wrapper {
     padding: 120px 0;
+    font-size: 20px;
   }
+}
+
+.bill_span {
+  text-align: center;
+  color: #cbc4c4;
 }
