@@ -24,7 +24,6 @@ export const ItemSummary = defineComponent({
   setup: (props, context) => {
     const itemStore = useItemStore(['items', props.startDate, props.endDate])
     useAfterMe(() => itemStore.fetchItems(props.startDate, props.endDate))
-
     watch(
       () => [props.startDate, props.endDate],
       () => {
@@ -96,11 +95,8 @@ export const ItemSummary = defineComponent({
                     <div class={s.text}>
                       <div class={s.tagAndAmount}>
                         <span class={s.tag}>{item.tags && item.tags.length > 0 ? item.tags[0].name : '未分类'}</span>
-                        <span class={[
-                          item.kind === 'expenses' ? s.expensesAmount : s.incomeAmount
-                        ]}>
-                          ￥
-                          <Money value={item.amount} />
+                        <span class={[item.kind === 'expenses' ? s.expensesAmount : s.incomeAmount]}>
+                          ￥{item.kind === 'expenses' ? '-' : '+'}<Money value={item.amount} />
                         </span>
                       </div>
                       <div class={s.time}>
