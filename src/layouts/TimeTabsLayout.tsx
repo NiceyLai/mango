@@ -60,8 +60,8 @@ export const TimeTabsLayout = defineComponent({
     ]
     const refOverlayVisible = ref(false)
     const onSubmitCustomTime = (e: Event) => {
-      if (new Date(tempTime.start).getTime() > new Date(tempTime.end).getTime()) {
-        return Toast('开始时间大于结束时间\n请重新选择时间')
+      if (new Date(tempTime.start).getTime() >= new Date(tempTime.end).getTime()) {
+        return Toast('开始时间大于等于结束时间\n请重新选择时间')
       }
       e.preventDefault()
       refOverlayVisible.value = false
