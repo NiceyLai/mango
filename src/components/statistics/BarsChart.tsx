@@ -3,9 +3,9 @@ import { RouterLink } from 'vue-router';
 import { Button } from '../../shared/Button';
 import { Center } from '../../shared/Center';
 import { Money } from '../../shared/Money';
-import s from './Bars.module.scss';
+import s from './BarsChart.module.scss';
 
-export const Bars = defineComponent({
+export const BarsChart = defineComponent({
   props: {
     data: {
       type: Array as PropType<{ tag: Tag, amount: number, percent: number }[]>

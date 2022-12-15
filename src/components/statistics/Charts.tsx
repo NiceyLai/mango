@@ -3,7 +3,7 @@ import { FormItem } from '../../shared/Form'
 import s from './Charts.module.scss'
 import { LineChart } from './LineChart'
 import { PieChart } from './PieChart'
-import { Bars } from './Bars'
+import { BarsChart } from './BarsChart'
 import { http } from '../../shared/Http'
 import { Time } from '../../shared/time'
 const DAY = 24 * 3600 * 1000
@@ -107,7 +107,7 @@ export const Charts = defineComponent({
         />
         <LineChart data={betterData1.value} />
         <PieChart data={betterData2.value} />
-        <Bars data={betterData3.value} />
+        <BarsChart data={betterData3.value} />
       </div>
     )
   }
