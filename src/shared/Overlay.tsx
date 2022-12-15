@@ -62,7 +62,7 @@ export const Overlay = defineComponent({
 				<section class={s.currentUser}>
 					{me.value ?
 						<div>
-							<h2 class="s.email">
+							<h2 class={s.email}>
 								{me.value.email}
 							</h2>
 							<p onClick={onSignOut}>点击这里退出登录</p>
