@@ -80,42 +80,49 @@ export const TimeTabsLayout = defineComponent({
           default: () => (
             <>
               {props.hideThisYear ? (
-                <Tabs
-                  classPrefix="customTabs"
-                  v-model:selected={refSelected.value}
-                  onUpdate:selected={onSelect}
-                  rerenderOnSelect={props.rerenderOnSwitchTab}
-                >
-                  <Tab value="本月" name="本月">
-                    <props.component startDate={timeList[0].start.format()} endDate={timeList[0].end.format()} />
-                  </Tab>
-                  <Tab value="上月" name="上月">
-                    <props.component startDate={timeList[1].start.format()} endDate={timeList[1].end.format()} />
-                  </Tab>
-                  <Tab value="自定义时间" name="自定义时间">
-                    <props.component startDate={customTime.start} endDate={customTime.end} />
-                  </Tab>
-                </Tabs>
+                <div class={s.wrapper}>
+                  <Tabs
+                    classPrefix="customTabs"
+                    v-model:selected={refSelected.value}
+                    onUpdate:selected={onSelect}
+                    rerenderOnSelect={props.rerenderOnSwitchTab}
+                    class={s.tabs}
+                  >
+                    <Tab value="本月" name="本月">
+                      <props.component startDate={timeList[0].start.format()} endDate={timeList[0].end.format()} />
+                    </Tab>
+                    <Tab value="上月" name="上月">
+
+                      <props.component startDate={timeList[1].start.format()} endDate={timeList[1].end.format()} />
+                    </Tab>
+                    <Tab value="自定义时间" name="自定义时间">
+                      <props.component startDate={customTime.start} endDate={customTime.end} />
+                    </Tab>
+                  </Tabs>
+                </div>
               ) : (
-                <Tabs
-                  classPrefix="customTabs"
-                  v-model:selected={refSelected.value}
-                  onUpdate:selected={onSelect}
-                  rerenderOnSelect={props.rerenderOnSwitchTab}
-                >
-                  <Tab value="本月" name="本月">
-                    <props.component startDate={timeList[0].start.format()} endDate={timeList[0].end.format()} />
-                  </Tab>
-                  <Tab value="上月" name="上月">
-                    <props.component startDate={timeList[1].start.format()} endDate={timeList[1].end.format()} />
-                  </Tab>
-                  <Tab value="今年" name="今年">
-                    <props.component startDate={timeList[2].start.format()} endDate={timeList[2].end.format()} />
-                  </Tab>
-                  <Tab value="自定义时间" name="自定义时间">
-                    <props.component startDate={customTime.start} endDate={customTime.end} />
-                  </Tab>
-                </Tabs>
+                <div class={s.wrapper}>
+                  <Tabs
+                    classPrefix="customTabs"
+                    v-model:selected={refSelected.value}
+                    onUpdate:selected={onSelect}
+                    rerenderOnSelect={props.rerenderOnSwitchTab}
+                    class={s.tabs}
+                  >
+                    <Tab value="本月" name="本月">
+                      <props.component startDate={timeList[0].start.format()} endDate={timeList[0].end.format()} />
+                    </Tab>
+                    <Tab value="上月" name="上月">
+                      <props.component startDate={timeList[1].start.format()} endDate={timeList[1].end.format()} />
+                    </Tab>
+                    <Tab value="今年" name="今年">
+                      <props.component startDate={timeList[2].start.format()} endDate={timeList[2].end.format()} />
+                    </Tab>
+                    <Tab value="自定义时间" name="自定义时间">
+                      <props.component startDate={customTime.start} endDate={customTime.end} />
+                    </Tab>
+                  </Tabs>
+                </div>
               )}
               <Overlay show={refOverlayVisible.value} class={s.overlay}>
                 <div class={s.overlay_inner}>

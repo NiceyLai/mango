@@ -32,3 +32,13 @@
     }
   }
 }
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 88px);
+}
+
+.tabs {
+  overflow: auto;
+}
