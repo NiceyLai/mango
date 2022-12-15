@@ -1,4 +1,4 @@
-import { computed, defineComponent, PropType, reactive } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import { RouterLink } from 'vue-router';
 import { Button } from '../../shared/Button';
 import { Center } from '../../shared/Center';

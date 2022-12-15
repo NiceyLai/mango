@@ -48,26 +48,10 @@
       height: 100%;
       width: 0;
       transition: width 500ms;
+      background-image: linear-gradient(to right, #f3d0c4 0%, #dc5d53 30%, #dc5d53 100%);
     }
   }
 
-  &:nth-child(1) {
-    .bar_inner {
-      background: #eba953;
-    }
-  }
-
-  &:nth-child(2) {
-    .bar_inner {
-      background: #53a867;
-    }
-  }
-
-  &:nth-child(3) {
-    .bar_inner {
-      background: #91cc75;
-    }
-  }
 }
 
 .button {
