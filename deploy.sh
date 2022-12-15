@@ -18,6 +18,7 @@ echo > .nojekyll
 git init
 git checkout -B main
 git add -A
+
 git commit -m 'deploy'
 
 # 如果你要部署在 https://<USERNAME>.github.io
