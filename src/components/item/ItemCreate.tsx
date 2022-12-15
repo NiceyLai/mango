@@ -27,6 +27,10 @@ export const ItemCreate = defineComponent({
     const router = useRouter()
     const onError = (error: AxiosError<ResourceError>) => {
       if (error.response?.status === 422) {
+        console.log(error.response.data.errors);
+        if (error.response.data.errors.tag_ids.indexOf('必填') >= 0) {
+          error.response.data.errors.tag_ids[0] = '未选择标签'
+        }
         Dialog.alert({
           title: '出错',
           message: Object.values(error.response.data.errors).join('\n')
