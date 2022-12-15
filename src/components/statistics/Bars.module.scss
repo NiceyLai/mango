@@ -70,8 +70,8 @@
   }
 }
 
-.nothings {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.button {
+  &_wrapper {
+    padding: 16px 16px;
+  }
 }
