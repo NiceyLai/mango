@@ -74,7 +74,7 @@ export default defineConfig(({ command }) => {
         }
       })
     ],
-    base: '/mango-1/',
+    base: './',
     server: {
       proxy: {
         '/api/v1': {
