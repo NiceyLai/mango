@@ -10,6 +10,8 @@ import { hasError, validate } from '../../shared/validate'
 import { InputPad } from './InputPad'
 import s from './ItemCreate.module.scss'
 import { Tags } from './Tags'
+import { usePreferenceStore } from "../../stores/usePreferenceStore";
+
 export const ItemCreate = defineComponent({
   props: {
     name: {
@@ -17,8 +19,9 @@ export const ItemCreate = defineComponent({
     }
   },
   setup: (props, context) => {
+    const PreferenceStore = usePreferenceStore(); // 用户偏好
     const formData = reactive<Partial<Item>>({
-      kind: 'expenses',
+      kind: PreferenceStore.kind, // 交易类别，默认为「支出」
       tag_ids: [],
       amount: 0,
       happen_at: new Date().toISOString()
@@ -65,7 +68,7 @@ export const ItemCreate = defineComponent({
           default: () => (
             <>
               <div class={s.wrapper}>
-                <Tabs v-model:selected={formData.kind} class={s.tabs}>
+                <Tabs v-model:selected={PreferenceStore.kind} class={s.tabs}>
                   <Tab value="expenses" name="支出">
                     <Tags kind="expenses" v-model:selected={formData.tag_ids![0]} />
                   </Tab>
@@ -75,6 +78,7 @@ export const ItemCreate = defineComponent({
                 </Tabs>
                 <div class={s.inputPad_wrapper}>
                   <InputPad
+                    v-model:kind={PreferenceStore.kind}
                     v-model:happenAt={formData.happen_at}
                     v-model:amount={formData.amount}
                     onSubmit={onSubmit}
