@@ -59,14 +59,14 @@ export const TimeTabsLayout = defineComponent({
       }
     ]
     const refOverlayVisible = ref(false)
-    const onSubmitCustomTime = (e: Event) => {
-      if (new Date(tempTime.start).getTime() >= new Date(tempTime.end).getTime()) {
-        return Toast('开始时间大于等于结束时间\n请重新选择时间')
-      }
-      e.preventDefault()
-      refOverlayVisible.value = false
-      Object.assign(customTime, tempTime)
-    }
+    // const onSubmitCustomTime = (e: Event) => {
+    //   if (new Date(tempTime.start).getTime() >= new Date(tempTime.end).getTime()) {
+    //     return Toast('开始时间大于等于结束时间\n请重新选择时间')
+    //   }
+    //   e.preventDefault()
+    //   refOverlayVisible.value = false
+    //   Object.assign(customTime, tempTime)
+    // }
     const onSelect = (value: string) => {
       if (value === '自定义时间') {
         refOverlayVisible.value = true
@@ -95,9 +95,9 @@ export const TimeTabsLayout = defineComponent({
 
                       <props.component startDate={timeList[1].start.format()} endDate={timeList[1].end.format()} />
                     </Tab>
-                    <Tab value="自定义时间" name="自定义时间">
+                    {/* <Tab value="自定义时间" name="自定义时间">
                       <props.component startDate={customTime.start} endDate={customTime.end} />
-                    </Tab>
+                    </Tab> */}
                   </Tabs>
                 </div>
               ) : (
@@ -118,13 +118,13 @@ export const TimeTabsLayout = defineComponent({
                     <Tab value="今年" name="今年">
                       <props.component startDate={timeList[2].start.format()} endDate={timeList[2].end.format()} />
                     </Tab>
-                    <Tab value="自定义时间" name="自定义时间">
+                    {/* <Tab value="自定义时间" name="自定义时间">
                       <props.component startDate={customTime.start} endDate={customTime.end} />
-                    </Tab>
+                    </Tab> */}
                   </Tabs>
                 </div>
               )}
-              <Overlay show={refOverlayVisible.value} class={s.overlay}>
+              {/* <Overlay show={refOverlayVisible.value} class={s.overlay}>
                 <div class={s.overlay_inner}>
                   <header>请选择时间</header>
                   <main>
@@ -142,7 +142,7 @@ export const TimeTabsLayout = defineComponent({
                     </Form>
                   </main>
                 </div>
-              </Overlay>
+              </Overlay> */}
             </>
           )
         }}
