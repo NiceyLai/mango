@@ -1,5 +1,6 @@
 import { defineComponent, PropType } from "vue";
 import s from './Tabs.module.scss';
+import { usePreferenceStore } from "../stores/usePreferenceStore";
 export const Tabs = defineComponent({
   props: {
     classPrefix: {
@@ -16,6 +17,8 @@ export const Tabs = defineComponent({
   },
   emits: ['update:selected'],
   setup: (props, context) => {
+    // 记录用户偏好
+    const PreferenceStore = usePreferenceStore();
     return () => {
       const tabs = context.slots.default?.();
       if (!tabs) return () => null
@@ -32,7 +35,10 @@ export const Tabs = defineComponent({
               item.props?.value === props.selected ? [s.selected, cp + '_selected'] : '',
               cp + '_tabs_nav_item'
             ]}
-              onClick={() => context.emit('update:selected', item.props?.value)}
+              onClick={() => {
+                PreferenceStore.updateKind();
+                context.emit("update:selected", item.props?.value);
+              }}
             >
               {item.props?.name}
             </li>)}
