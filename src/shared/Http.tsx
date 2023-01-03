@@ -58,7 +58,7 @@ http.instance.interceptors.response.use(
   }
 )
 
-if (DEBUG) {
+if (false) {
   import('../mock/mock').then(
     ({
       mockItemCreate,
